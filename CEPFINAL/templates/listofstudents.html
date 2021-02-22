@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>List of Students</title>
+{% endblock %}
+{% block content %}
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="col-lg-4 offset-lg-4 text-center">
+        <div class="section-heading">
+          <h3> Registered Students </h3>
+          <br>
+      </div>
+    </div>
+      <div class="row">
+        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+          <tr>
+            <th><h4>Reg Num</h4></th>
+            <th><h4>CNIC</h4></th>
+            <th><h4>Email</h4></th> 
+            <th><h4>Phone num</h4></th>
+            <th><h4>Room num</h4></th>
+            <th><h4>Department</h4></th>
+          </tr>
+          <br>
+          {% for stu in students %}
+          <tr>
+            <br>
+            <td><h6>{{ stu.Regnum}}</h6></td>
+            <td><h6>{{ stu.Student_CNIC}}</h6></td>
+            <td><h6>{{ stu.Email}}</h6></td>
+            <td><h6>{{ stu.Phone_No}}</h6></td>
+            <td><h6>{{ stu.Room_No}}</h6></td>
+            <td><h6>{{ stu.Department_Name}}</h6></td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+  </div>
+</section>
+{% if user.is_superuser %}
+<section class="section" id="about">
+  <div class="container">
+    <div class="col-lg-4 offset-lg-4 text-center">
+        <div class="section-heading">
+          <h3> Registered Employees </h3>
+          <br>
+      </div>
+    </div>
+      <div class="row">
+        <table class="table table-responsive-sm table-bordered table-striped table-sm">
+          <tr>
+            <th><h4>Name</h4></th>
+            <th><h4>Phone num</h4></th>
+            <th><h4>Salary</h4></th>
+            <th><h4>Designation</h4></th>
+          </tr>
+          <br>
+          {% for emp in employees %}
+          <tr>
+            <br>
+            <td><h6>{{ emp.user__first_name}}  {{emp.user__last_name}}</h6></td>
+            <td><h6>{{ emp.Phone}}</h6></td>
+            <td><h6>{{ emp.Salary}}</h6></td>
+            <td><h6>{{ emp.designation}}</h6></td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+  </div>
+</section>
+{% endif %}
+<style>
+  table, th, td {
+    border: 2px solid rgb(252, 83, 119);
+  }
+</style>
+
+{% endblock content %}

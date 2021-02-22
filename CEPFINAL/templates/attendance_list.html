@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Attendance</title>
+{% endblock %}
+{% block content %}
+
+<section class="section" id="about">
+    <div class="container">
+      <div class="col-lg-4 offset-lg-4 text-center">
+        <div class="section-heading">
+          <h5> Attendance List for {{Att_date}} <br> Time: {{Att_time}} </h5>
+      </div>
+    </div>
+    
+   <table class="table table-responsive-sm table-bordered table-striped table-sm">
+       <tr>
+           <th>Student</th>
+           <th>Status</th>
+       </tr>
+       {% for std_list in mess %}
+           <tr>
+               <td class="cls_name">{{ std_list.student }}</td>
+               <td class="cls_admission">{{ std_list.status }}</td>
+              
+               <!-- <td><button class="count_btn">Present</button></td> -->
+           </tr>
+       {% endfor %}
+   </table>
+</section>
+<style>
+  table, th, td {
+    border: 2px solid rgb(252, 83, 119);
+  }
+</style>
+{% endblock %}

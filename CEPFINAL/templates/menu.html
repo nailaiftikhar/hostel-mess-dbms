@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+    <title>Menu</title>
+{% endblock %}
+{% block content %}      
+      <!-- ***** Menu Area Starts ***** -->
+      <section class="section" id="reservation">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 offset-lg-4 text-center">
+                    <div class="section-heading">
+                        <h6>Weekly Menu</h6>
+                        <h2>This Week’s Menu Items</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="left-text-content">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="phone">
+                                    <i class="fa fa-cutlery"></i>
+                                    <br>
+
+        
+                                        <h3>Lunch Menu</h3>
+                                    
+                                    <span><br>Time: 12:00 PM to 2:00 PM</span>
+
+                                    <h6>________________</h6>
+                                {% if user.is_authenticated %}
+                                    {% for lunch in Lmenu %}
+                                    <br>
+                                        <h6>{{lunch.day}}</h6>
+        
+                                    <h4>{{lunch.name}}</h4>
+                                    <span>Price: Rs.{{lunch.Price}} <br>{{lunch.desc}}</span>
+
+                                    <h6>________________</h6>
+                                    {% endfor %}
+                                {% else %}
+                                    <br>
+                                    <span><li class="scroll-to-section"><a href="../accounts/login">You need to login to view the menu!</a></li></span>
+                                    <h6>________________</h6>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div class="phone">
+                                    <i class="fa fa-cutlery"></i>
+                                    <br>
+
+        
+                                        <h3>Dinner Menu</h3>
+                                    
+                                    <span><br>Time: 6:00 PM to 8:00 PM</span>
+                                    <h6>________________</h6>
+                                {% if user.is_authenticated %}
+                                    {% for dinner in Dmenu %}
+                                    
+                                        <br>
+                                            <h6>{{dinner.day}}</h6>
+        
+                                        <h4>{{dinner.name}}</h4>
+                                        <span>Price: Rs.{{dinner.Price}} <br>{{dinner.desc}}</span>
+
+                                        <h6>________________</h6>
+                                
+                                    {% endfor %}
+                                {% else %}
+                                    <br>
+                                    <span><li class="scroll-to-section"><a href="../accounts/login">You need to login to view the menu!</a></li></span>
+                                    <h6>________________</h6>
+                                {% endif %}
+
+                                </div>
+                            </div>    
+                        </div>
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% endblock content %}
+  

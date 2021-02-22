@@ -1,0 +1,1 @@
+web: gunicorn CEPFINAL.wsgi --log-file -

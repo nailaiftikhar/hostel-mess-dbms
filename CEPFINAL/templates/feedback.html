@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Feedback</title>
+{% endblock %}
+{% block content %}
+    <!-- ***** Reservation Us Area Starts ***** -->
+    <section class="section" id="reservation">
+      <div class="col-lg-4 offset-lg-4 text-center">
+        <div class="section-heading">
+          {% for message in messages %}
+          <h6> {{message}} </h6>
+          {% endfor %}
+      </div>
+    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="left-text-content">
+                        <div class="section-heading">
+                            <h6>Give Feedback</h6>
+                            <h2>Here You Can give feedback or any complain about staff or mess quality.</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="phone">
+                                    <i class="fa fa-phone"></i>
+                                    <h4>Phone Numbers</h4>
+                                    <span><a href="#">080-090-0990</a><br><a href="#">080-090-0880</a></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="message">
+                                    <i class="fa fa-envelope"></i>
+                                    <h4>Emails</h4>
+                                    <span><a href="#">hello@company.com</a><br><a href="#">info@company.com</a></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <form id="contact"  action="feedback" method="post">
+                            {% csrf_token %}
+                          <div class="row">
+                            <div class="col-lg-12">
+                                <h4>Feedback</h4>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                              <fieldset>
+                                <input type="text" name="Regnum" id="name" placeholder="Reg num*" required="">
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                              <fieldset>
+                              <input type="text" name="rating" id="rating" placeholder="Rate out of 10" >
+                            </fieldset>
+                            </div>
+                            
+                            <div class="col-lg-6">
+                                <div id="filterDate2">    
+        
+                                    <input  type="text" name="date" id="date" class="form-control" placeholder="YYYY-MM-DD*">
+                                
+
+                                </div>   
+                            </div>
+                            <div class="col-md-6 col-sm-12">
+                              <fieldset>
+                                <select value="time" name="time" id="time">
+                                    <option name="Lunch" id="Lunch">Lunch</option>
+                                    <option name="Dinner" id="Dinner">Dinner</option>
+                                </select>
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                              <fieldset>
+                                <textarea name="Message" rows="6" id="message" placeholder="Message*" required=""></textarea>
+                              </fieldset>
+                            </div>
+                            <div class="col-lg-12">
+                              <fieldset>
+                                <button type="submit" id="form-submit" class="main-button-icon">Submit Feedback</button>
+                              </fieldset>
+                            </div>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% endblock content %}

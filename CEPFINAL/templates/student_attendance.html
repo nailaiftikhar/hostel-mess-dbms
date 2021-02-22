@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Attendance</title>
+{% endblock %}
+{% block content %}
+
+<section class="section" id="about">
+    <div class="container">
+        <div class="col-lg-4 offset-lg-4 text-center">
+            <div class="section-heading">
+              <h3> Attendance Form </h3>
+              <br>
+          </div>
+        </div>
+        <div class="section-heading">
+            {% for message in messages %}
+            <h6> {{message}} </h6>
+            {% endfor %}
+        </div>
+
+    <form id="contact" method="POST" action="{% url 'student_attendance' %}">
+        <div class="row">
+            
+        <div class="col-md-6 col-sm-12">   
+              <fieldset>
+                <input  type="text" name="mess_date" id="date" class="form-control" placeholder="DD-MM-YYYY*">
+              </fieldset>   
+        </div>
+        <div class="col-md-6 col-sm-12">   
+          <fieldset>
+            <input  type="text" name="mess_day" id="date" class="form-control" placeholder="Monday">
+          </fieldset>   
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <fieldset>
+            <select value="time" name="mess_time" id="time" class="form-control" placeholder="TIME">
+                <option name="Lunch" id="Lunch">Lunch</option>
+                <option name="Dinner" id="Dinner">Dinner</option>
+            </select>
+          </fieldset>
+        </div>
+        </div>
+        <br>
+   <table class="table table-responsive-sm table-bordered table-striped table-sm">
+       <tr>
+           <th>Student</th>
+           <th>Status</th>
+       </tr>
+       {% csrf_token %}
+       {{ formset.management_form }}
+       {% for stu,form in mylist %}
+           <tr>
+               <td>{{stu.Regnum}}</td>
+               <td><span class="radio">{{ form }}</span></td>
+           </tr>
+       {% endfor %}
+   </table>
+   <div class="col-lg-12">
+    <fieldset>
+      <button type="submit" id="form-submit" class="main-button-icon">Save Attendance</button>
+    </fieldset>
+  </div>
+    </form>
+</section>
+<style>
+  table, th, td {
+    border: 2px solid rgb(252, 83, 119);
+  }
+</style>
+<style>
+    .radio{
+    display:inline-block;
+    }
+</style>
+{% endblock %}
+
+
+   

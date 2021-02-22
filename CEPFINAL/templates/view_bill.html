@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Bill</title>
+{% endblock %}
+{% block content %}
+
+<section class="section" id="about" >
+  <div class="col-lg-4 offset-lg-4 text-center">
+    <div class="section-heading">
+      
+      <h3>Check Bill Amount</h3>
+  </div>
+</div>
+
+ <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="contact-form">
+            <form id="contact"  action="view_bill" method="post">
+              {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-12">
+                <h5>Enter Registeration number</h5>
+                <h4></h4>
+              </div>
+              <div class="col-lg-12">   
+                <fieldset>
+                  <input  type="text" name="Reg_Num" id="date" class="form-control" placeholder="201X-XX-000">
+                </fieldset>   
+              </div>  
+            </div>
+              <div class="col-lg-12">
+                <fieldset>
+                  <button type="submit" id="form-submit" class="main-button-icon" onclick="printPopUp()" >Check Bill</button>
+                </fieldset>
+              </div>
+            </div>
+          </form>
+          </div>
+      </div>
+  </div> 
+</div>
+<script> 
+  function printPopUp() { 
+      alert('Bill Amount: {{bill}}') 
+      window.print(); 
+  } 
+</script> 
+</section>
+
+
+
+{% endblock %}

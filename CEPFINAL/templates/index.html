@@ -1,0 +1,310 @@
+{% load static %}
+{% static "images" as baseURL%}
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <title>Mess Management - Web application</title>
+<!--
+    
+TemplateMo 558 Klassy Cafe
+
+https://templatemo.com/tm-558-klassy-cafe
+
+-->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{%static 'css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{%static 'css/font-awesome.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{%static 'css/templatemo-klassy-cafe.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{%static 'css/owl-carousel.css' %}">
+
+    <link rel="stylesheet" type="text/css" href="{%static 'css/lightbox.css' %}">
+
+    </head>
+    
+    <body>
+    
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- ***** Logo Start ***** -->
+                        <a href="index.html" class="logo">
+                            <img src="{%static 'images/klassy-logo.png' %}" align="Hostel Mess Management System">
+                        </a>
+                        <!-- ***** Logo End ***** -->
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                            <li class="scroll-to-section"><a href="#about">About</a></li>
+                           	
+                        <!-- 
+                            <li class="submenu">
+                                <a href="javascript:;">Drop Down</a>
+                                <ul>
+                                    <li><a href="#">Drop Down Page 1</a></li>
+                                    <li><a href="#">Drop Down Page 2</a></li>
+                                    <li><a href="#">Drop Down Page 3</a></li>
+                                </ul>
+                            </li>
+                        -->
+                            <li class="scroll-to-section"><a href="MESS_Management/menu">Menu</a></li>
+                            {% if user.is_authenticated %}
+                            <li class="scroll-to-section"><a href="#top" class="active">{{ user.username}}</a></li>
+                            <li class="scroll-to-section"><a href="accounts/logout">Logout</a></li>
+                                {% if user.is_employee %}
+                                <li class="submenu">
+                                    <a href="javascript:;">View</a>
+                                    <ul>
+                                        <li><a href="accounts/displayfeedbacks">Feedbacks</a></li>
+                                        <li><a href="accounts/listofstudents">Registered Students</a></li>
+                                        <li><a href="MESS_Management/view_bill">Check Bills</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="scroll-to-section"><a href="MESS_Management/student_attendance">Attendance</a></li>
+                                {% elif user.is_superuser %}
+                                <li class="submenu">
+                                    <a href="javascript:;">View</a>
+                                    <ul>
+                                        <li class="scroll-to-section"><a href="accounts/displayfeedbacks">Feedbacks</a></li>
+                                        <li class="scroll-to-section"><a href="accounts/listofstudents">Registered Users</a></li>
+                                        <li class="scroll-to-section"><a href="MESS_Management/view_attendance">Attendance</a></li>
+                                    </ul>
+                                </li> 
+                                <li class="scroll-to-section"><a href="../admin">Admin</a></li>
+                                {% else %} 
+                                <li class="submenu">
+                                    <a href="javascript:;">View</a>
+                                    <ul>
+                                        <li><a href="MESS_Management/view_attendance">Attendance</a></li>
+                                        <li><a href="MESS_Management/view_bill">Bill</a></li>
+                                    </ul>
+                                </li>
+                                <li class="scroll-to-section"><a href="accounts/feedback">Feedback</a></li>
+                                {% endif %}
+                            {% else %}
+                            <li class="submenu">
+                                <a href="javascript:;">Register</a>
+                                <ul>
+                                    <li><a href="accounts/student_register">As student</a></li>
+                                    <li><a href="accounts/employee_register">As mess employee</a></li>
+                                </ul>
+                            </li>
+                            <li class="scroll-to-section"><a href="accounts/login">Login</a></li> 
+                            {% endif %}
+                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
+                            
+                        </ul>        
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+   <!-- ***** Main Banner Area Start ***** -->
+   <div id="top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="left-content">
+                    <div class="inner-content">
+                        <h4>Mess Management</h4>
+                        <h6>STUDENT HOSTELS</h6>
+                        <div class="main-white-button scroll-to-section">
+                            <a href="accounts/login">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="main-banner header-text">
+                    <div class="Modern-Slider">
+                      <!-- Item -->
+                      <div class="item">
+                        <div class="img-fill">
+                            <img src="{%static 'images/slide-02.jpg' %}" alt="">
+                        </div>
+                      </div>
+                      <!-- // Item -->
+                      <!-- Item 
+                      <div class="item">
+                        <div class="img-fill">
+                            <img class="mySlides" src="{%static 'images/ayesha.PNG' %}" alt="">
+                        </div>
+                      </div>
+                     // Item 
+                      
+                      <div class="item">
+                        <div class="img-fill">
+                            <img class="mySlides" src="{%static 'images/khadejaHall.jpg' %}" alt="">
+                        </div>
+                      </div>
+                       // Item 
+                      <script>
+                        var myIndex = 0;
+                        carousel();
+                        
+                        function carousel() {
+                          var i;
+                          var x = document.getElementsByClassName("mySlides");
+                          for (i = 0; i < x.length; i++) {
+                            x[i].style.display = "none";  
+                          }
+                          myIndex++;
+                          if (myIndex > x.length) {myIndex = 1}    
+                          x[myIndex-1].style.display = "block";  
+                          setTimeout(carousel, 4000); // Change image every 2 seconds
+                        }
+                        </script>
+                    -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***** Main Banner Area End ***** -->
+
+    <!-- ***** About Area Starts ***** -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="left-text-content">
+                        <div class="section-heading">
+                            <h6>About Us</h6>
+                            <h2>We provide the best service and quality mess.</h2>
+                        </div>
+                        <p>Mess Management--Student Hostels</p><br>
+                        <p>This app provides the student and employee registration, Mess Employee once Registered
+                            can login to his account to check the menu, mark daily attendance, view the registered 
+                            students and see if there are any complains.<br>
+                            On the other hand, student once registered, can view the weekly menu, check the attendance
+                            sheet, or give any feedback or complain regarding mess staff or quality. 
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xs-12">
+                    <div class="right-content">
+                        <div class="thumb">
+                            <img src="{%static 'images\Pakistani-Food-lead.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ***** About Area Ends ***** -->
+
+   
+    <!-- ***** Menu Area Ends ***** -->
+
+    <!-- ***** Chefs Area Ends ***** -->
+       <!-- ***** Menu Area Starts ***** -->
+
+    <!-- ***** Reservation Area Ends ***** -->
+
+
+    
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xs-12">
+                    <div class="right-text-content">
+                        <p>2017-EE-104
+                        
+                            <br>2017-EE-111</p>
+                           <!--  <ul class="social-icons">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            </ul> -->
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="logo">
+                        <a href="index.html"><img src="{%static 'images/white-logo.png' %}" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                    <div class="left-text-content">
+                        <p>MESS MANAGEMENT SYSTEM
+                        
+                        <br>STUDENT HOSTELS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{%static 'js/jquery-2.1.0.min.js' %}"></script>
+
+    <!-- Bootstrap -->
+    <script src="{%static 'js/popper.js' %}"></script>
+    <script src="{%static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugins -->
+    <script src="{%static 'js/owl-carousel.js' %}"></script>
+    <script src="{%static 'js/accordions.js' %}"></script>
+    <script src="{%static 'js/datepicker.js' %}"></script>
+    <script src="{%static 'js/scrollreveal.min.js' %}"></script>
+    <script src="{%static 'js/waypoints.min.js' %}"></script>
+    <script src="{%static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{%static 'js/imgfix.min.js' %}"></script> 
+    <script src="{%static 'js/slick.js' %}"></script> 
+    <script src="{%static 'js/lightbox.js' %}"></script> 
+    <script src="{%static 'js/isotope.js' %}"></script> 
+    
+    <!-- Global Init -->
+    <script src="{%static 'js/custom.js' %}"></script>
+    <script>
+
+        $(function() {
+            var selectedClass = "";
+            $("p").click(function(){
+            selectedClass = $(this).attr("data-rel");
+            $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("."+selectedClass).fadeOut();
+            setTimeout(function() {
+              $("."+selectedClass).fadeIn();
+              $("#portfolio").fadeTo(50, 1);
+            }, 500);
+                
+            });
+        });
+
+    </script>
+  </body>
+</html>

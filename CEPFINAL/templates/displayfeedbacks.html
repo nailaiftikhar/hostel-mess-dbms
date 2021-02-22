@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>View Feedbacks</title>
+{% endblock %}
+{% block content %}
+
+<section class="section" id="about">
+  <div class="container">
+    <div class="col-lg-4 offset-lg-4 text-center">
+      <div class="section-heading">
+        <h1> Students Feedback on Mess </h1>
+    </div>
+  </div>
+      <div class="row">
+        <table style="width:100%">
+          <tr>
+            <th><h4>Menu Date</h4></th>
+            <th><h4>Time</h4></th> 
+            <th><h4>Message</h4></th>
+            <th><h4>Rating</h4></th>
+          </tr>
+          <br>
+          {% for feed in detail %}
+          <tr>
+            <br>
+            <td><h6>{{ feed.date}}</h6></td>
+            <td><h6>{{ feed.time}}</h6></td>
+            <td><h6>{{ feed.Message}}</h6></td>
+            <td><h6>{{ feed.rating}}/10</h6></td>
+          </tr>
+          {% endfor %}
+        </table>
+    </div>
+  </div>
+</section>
+<style>
+  table, th, td {
+    border: 2px solid rgb(252, 83, 119);
+  }
+</style>
+
+{% endblock content %}
