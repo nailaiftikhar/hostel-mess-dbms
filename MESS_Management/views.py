@@ -115,6 +115,6 @@ def view_bill(request):
         Reg_Num = request.POST.get('Reg_Num',False)
         std_id = Student.objects.get(Regnum=Reg_Num)
         bill = MessAttendance.objects.filter(student=std_id,status='present' or 'P').select_related('menu').values('menu__Price').aggregate(Sum('menu__Price'))['menu__Price__sum']
-        return render(request,'view_bill.html',context={'bill':bill})  
+        return render(request,'show_bill.html',context={'Reg_Num':Reg_Num,'bill':bill})  
     else:
          return render(request,'view_bill.html')      

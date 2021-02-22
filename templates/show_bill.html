@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head %}
+    <title>Show Bill</title>
+{% endblock %}
+{% block content %}
+
+<section class="section" id="about" >
+  <div class="col-lg-4 offset-lg-4 text-center">
+    <div class="section-heading">
+      
+      <h3>Bill Amount</h3>
+  </div>
+</div>
+
+ <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="contact-form">
+            
+              {% csrf_token %}
+            <div class="row">
+              <div class="col-lg-12">
+                <h5>Registration Number: {{Reg_Num}}</h5>
+                <h4>Current Bill: Rs.{{bill}}</h4>
+              </div>
+        
+          </div>
+      </div>
+  </div> 
+</div>
+</section>
+
+
+
+{% endblock %}
