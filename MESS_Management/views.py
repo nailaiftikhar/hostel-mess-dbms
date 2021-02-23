@@ -25,6 +25,7 @@ def menu(request):
     Dmenu = Menu.objects.filter(time='Dinner')
     return render(request,'menu.html',context={'Lmenu':Lmenu,'Dmenu':Dmenu})
 
+@employee_required
 def student_attendance(request):
     students = Student.objects.all()
     count = students.count()
@@ -47,56 +48,6 @@ def student_attendance(request):
     return render(request,'student_attendance.html',context = {'formset':formset,'mylist':mylist})
     
 # Create your views here.
-""" @employee_required
-def attendance_form(request):
-
-    def create_attendance(student_id,date,time):
-        student_obj = Student.objects.get(
-            Regnum=student_id
-        )
-        menu_obj = Menu.objects.get(date=date, time=time)
-        attendance_obj = MessAttendance.objects.create(student=student_obj,menu=menu_obj, status='Present',att_date=menu_obj.date,att_time=menu_obj.time)
-        return attendance_obj
-        
-    if request.method == 'POST':
-        Menu_date = request.POST['Menu_date']
-        Menu_time = request.POST['Menu_time']
-        Reg_Num = request.POST['Reg_Num']
-        #student_obj = Student.objects.get(Regnum=Reg_Num)
-        if Menu.objects.filter(date=Menu_date,time=Menu_time).exists():
-            create_attendance(Reg_Num,Menu_date,Menu_time)
-            menu_ob= Menu.objects.filter(date=Menu_date,time=Menu_time)
-            rec=BillRecord.objects.create(student=student_obj,bill=menu_ob)
-            return redirect('attendance_form')   
-        else:
-            messages.info(request,'No menu exists for the entered date')
-            return redirect('attendance_form')       
-    else:
-        return render(request,'attendance_form.html') """
-
-""" def attendance_form(request):
-    student_list = Student.objects.all()
-    context = {"student_list": student_list}
-    def create_attendance(student_id,date,time):
-        student_obj = Student.objects.get(
-            Regnum=student_id
-        )
-        menu_obj = Menu.objects.get(date=date, time=time)
-        attendance_obj = MessAttendance.objects.create(student=student_obj,menu=menu_obj, status='Present',att_date=menu_obj.date,att_time=menu_obj.time)
-        return attendance_obj
-    if request.method == 'POST':    
-        mess_date = request.POST.get('mess_date',False)
-        mess_time = request.POST.get('mess_time',False)
-        att_list = request.POST.getlist('att_list')
-        for id in att_list:
-            global att
-            att = get_object_or_404(att, code=id)
-            create_attendance(att,mess_date,mess_time)
-            return redirect('/') 
-    else:
-        return render(request,'attendance_form.html', context)
-
-""" 
 def view_attendance(request):
     if request.method == 'POST':
         Att_date = request.POST.get('Att_date',False)

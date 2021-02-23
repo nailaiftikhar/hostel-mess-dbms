@@ -48,10 +48,3 @@ class BillRecord(models.Model):
     def __str__(self):
         return self.bill   
 
-""" class BillManager(models.Manager):
-   
-    employees = Menu.objects.select_related('user').values('user__first_name','user__last_name','Phone','designation','Salary')
-    menu_ob= Menu.objects.get(date=mess_date,time=time)
-    stuBill = get_object_or_404(BillRecord,student_id=student.user_id)
-                stuBill.bill = stuBill.bill + menu_ob.Price
-                stuBill.save(update_fields=['bill']) """
